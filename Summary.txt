@@ -1,0 +1,59 @@
+Patient2Vec: A Personalized Interpretable Deep Representation of the Longitudinal Electronic Health Record
+
+
+A] Python Code Interpretation - 
+
+To run the code, I had to download and install two modules from the pypi.org website first. These two were 'torch' and 'numpy'. To do that, I opened the terminal in PyCharm and typed 'pip install torch' and 'pip install numpy'. 
+
+The code starts with the import of modules like "torch, torch.nn, torch.optim, torch.autograd, and numpy."
+
+Numpy is used to perform a wide variety of mathematical operations on arrays, while the torch is an open-source ML library used for creating deep neural networks. 
+
+A class by the name of 'Patient2Vec'is defined. It is inherited from the 'torch. nn' Module. According to the text in triple quotes, this class represents "a self-attentive representation learning framework". This framework consists of components like a convolutional embedding layer, a recurrent autoencoder with an encoder, a recurrent module, and a decoder. Also, a linear layer is on top of each decode step and the weights are shared at these steps. 
+
+6 methods are defined in this class. 
+
+1. The '__init__' method to set up the model's design. Several parameters such as input_size, hidden_size, n_layers, att_dim, initrange, etc., are given to it. These parameters are for the features of the model, like its layers, dimensions, sequence length, etc.
+
+2. The 'init_weights' method for the weight initialization of the model by using uniform random values within the specified range.
+
+3. The 'convolutional_layer' method to perform the convolutional operations on the input data using the convolutional layers defined in the method. Also, the activation function 'self.func_tanh' is applied and the resulting output is returned.
+
+4. The 'encode_rnn' method to perform the encoding step using a Recurrent Neural Network (RNN). Embedding and batch size are taken as input parameters and the RNN outputs are returned. 
+
+5. The 'add_beta_attention' method to implement the beta attention mechanism to the model. On the basis of the output states from the RNN, the attention weights are calculated. Then, attention weights and context vectors are returned.
+
+6. The 'forward' method for the forward pass of the model. It takes inputs, other input variables (inputs_other), and batch size as parameters. The method performs the convolutional operation, encoding with RNN, adds attention, and passes the context vector through a linear layer to get the final output.
+
+Finally, a function by the name of 'get_loss' is defined. This function is used to calculate the loss on the basis of the predicted values (pred), actual values (y), criterion (nn.CrossEntropyLoss), and the beta matrix (mtr). Additional loss based on the attention weights is calculated and the  (aai) and 'total loss' is returned. 
+
+
+
+B] Patient2Vec.png file (EHR Data Sequences) - EHR stands for Electronic Health Record. The image is the flowchart representation of the Patient2Vec Python code.
+
+In a nutshell, The flowchart begins with an array of the 'visits' of a particular patient to a hospital. Each element stores the medical data provided by the patient during a particular visit. This data in the array is then arranged in the form of a Vector representation for implementing the correct medical codes. After that, the data is sorted on the basis of specific medical data(back pain, bacterial infection, etc). In this step, the number of visits is stored in the array elements of the medical data 'array'. This helps in identifying which medical problem of the patient resulted in the higher number of his/her visits to the hospital. All of this medical data, along with the medicines prescribed for each problem, is then stored in the hospital's database for future use. In the possible visit of the patient in the future, the medical characteristics provided by him will be analyzed and linked with the previous medical data to predict the solution to his problem accurately and efficiently. 
+
+More about EHR - 
+
+EHR systems facilitate the collection of large-scale health data from real clinical settings. Despite the significant increase in the adoption of EHR systems, this data remains largely unexplored. However, it presents a large data source for knowledge discovery from patient health histories in tasks such as understanding disease correlations and predicting health outcomes. But the heterogeneity, sparsity, noise, and bias in this data present many complex challenges. This complexity makes it difficult to translate potentially relevant information into machine learning algorithms. 
+
+The computational framework, Patient2Vec, is used to learn an interpretable deep representation of longitudinal EHR data which is personalized for each patient. To evaluate this approach, we apply it to the prediction of future hospitalizations using real EHR data and compare its predictive performance with baseline methods. Patient2Vec produces a vector space with meaningful structure and it achieves an AUC of around 0.799 outperforming baseline methods. 
+
+Ultimately, the learned feature importance can be visualized and interpreted at both the individual and population levels to bring clinical insights.
+
+Significance of EHR - 
+
+EHR is the term used to describe electronic health records, which include the medical histories, diagnoses, prescriptions, and treatment regimens of individuals. EHR has significance because:
+
+Greater Accessibility: EHR gives healthcare professionals rapid access to patient information, regardless of where they are physically located. This promotes prompt decision-making and improves the coordination of treatment among various healthcare providers.
+
+Reduced Medication Errors and Improved Patient Safety: EHR systems offer alerts and reminders for potential drug interactions, allergies, and other crucial information. This lowers medication errors and enhances patient safety. Additionally, it guarantees current and precise recording, minimizing the possibility of medical errors brought on by illegible or incomplete handwritten notes.
+
+Efficient Information Sharing: EHR provides smooth patient data exchange between hospitals, doctors, and specialists. This reduces the possibility of medical errors caused by insufficient information and minimizes the need for redundant tests and treatments, saving time and costs.
+
+Data analytics and research: EHR systems produce a significant amount of organized and unstructured data that can be used for population health management, clinical research, and public health efforts. Aggregated data from EHRs can be analyzed to find trends, patterns, and best practices, ultimately resulting in better healthcare outcomes and evidence-based decision-making.
+
+Cost Savings: Although deploying EHR systems initially requires a sizable investment, doing so over time can result in cost savings. EHRs improve operational effectiveness and cost by streamlining operations, minimizing paperwork, and preventing test duplication.
+
+Patient Engagement: EHR systems frequently incorporate patient portals that let people access their own health information, contact with their medical professionals, and take an active role in their care. In addition to fostering a cooperative connection between patients and healthcare workers, this encourages patient engagement and gives people the tools they need to maintain their health.
+
